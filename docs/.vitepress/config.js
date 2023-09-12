@@ -15,7 +15,7 @@ module.exports = {
         ],
         // 侧边栏
         sidebar: [
-            { text: 'Home', link: '/' },
+            { text: 'Home', link: '/readme.md' },
             {
                 text: '计协介绍',
                 // link: '/计协介绍/',
