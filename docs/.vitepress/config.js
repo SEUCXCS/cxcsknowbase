@@ -22,7 +22,16 @@ module.exports = {
                 items: [
                     { text: '计协历史', link: '/计协介绍/计协历史' },
                     { text: '计协组织结构', link: '/计协介绍/计协组织结构' }
-                ]
+                ],
+                collapsed: true
+            },
+            {
+                text: '竞赛相关',
+                items: [
+                    { text: '蓝桥杯', link: '/比赛/蓝桥杯' },
+                    { text: "其他比赛", link: "/比赛/其他比赛" }
+                ],
+                collapsed: true
             }
         ],
         // footer: {
