@@ -1,0 +1,21 @@
+{
+  "name": "seucxcsdocument",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tslib": "^2.6.1",
+    "vitepress": "^1.0.0-rc.4"
+  },
+  "devDependencies": {
+    "vitepress-plugin-autobar": "^1.0.8"
+  }
+}
