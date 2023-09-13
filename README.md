@@ -17,7 +17,7 @@
 git clone https://github.com/SEUCXCS/cxcsknowbase
 cd cxcsknowbase
 npm i
-npm run dev
+npm run docs:dev
 ```
 
 出现如下信息即为成功：

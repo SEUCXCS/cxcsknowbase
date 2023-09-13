@@ -51,23 +51,25 @@ function readfile(dir) {
             if (ban.indexOf(file) == -1) {
                 // 查询是否有READMD.md
                 let index = fs.existsSync(path.join(filePath, "README.md"))
+
+                let obj = {
+                    text: file,
+                    items: readfile(filePath),
+                    collapsed: false,
+                }
                 // 如果有
                 if (index) {
                     // 将文件夹名和文件夹路径添加到sidebarnode中
-                    sidebarnode.push({
-                        text: file + "(README)",
-                        link: path.join(filePath, "README.md").replace(basePath, "").replace(".md", ""),
-                        items: readfile(filePath),
-                        collapsed: false,
-                    })
-                } else {
-                    // 递归读取文件夹
-                    sidebarnode.push({
-                        text: file,
-                        items: readfile(filePath),
-                        collapsed: false,
-                    })
+                    obj.link = path.join(filePath, "README.md").replace(basePath, "").replace(".md", "")
+                    obj.text += "(README)"
                 }
+                // 如果以-开头,则不折叠
+                if (file.indexOf("-") == 0) {
+                    obj.collapsed = true
+                    obj.text = obj.text.replace("-", "")
+                }
+                // 递归读取文件夹
+                sidebarnode.push(obj)
             }
         } else {
             // 判断是否为忽略的文件
