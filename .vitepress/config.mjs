@@ -12,7 +12,9 @@ let ban = [
     "markdown-examples.md",
     "index.md",
     "README.md",
-    ".git"
+    ".git",
+    "img",
+    "public",
 ]
 
 const basePath = path.join(__dirname, "../")
@@ -35,6 +37,24 @@ function readfile(dir) {
     let sidebarnode = []
     // 获取文件夹下的所有文件以及文件夹
     let files = fs.readdirSync(dir)
+    // 排序
+    files.sort((a, b) => {
+        // 数字开头优先
+        if (/^\d+/.test(a) && !/^\d+/.test(b)) {
+            return -1
+        }
+        else if (!/^\d+/.test(a) && /^\d+/.test(b)) {
+            return 1
+        }
+        else if (/^\d+/.test(a) && /^\d+/.test(b)) {
+            // 数字开头的按数字排序
+            return parseInt(a) - parseInt(b)
+        }
+        else {
+            // 其他按字母排序
+            return a.localeCompare(b)
+        }
+    })
     // 遍历文件夹
     files.forEach((file) => {
         // 获取文件夹或文件的路径
@@ -57,16 +77,23 @@ function readfile(dir) {
                     items: readfile(filePath),
                     collapsed: false,
                 }
+                // 如果以-结尾,则折叠
+                if (/\-$/.test(file)) {
+                    // console.log(file)
+                    obj.collapsed = true
+                    obj.text = obj.text.replace(/\-$/, "")
+                }
                 // 如果有
                 if (index) {
                     // 将文件夹名和文件夹路径添加到sidebarnode中
                     obj.link = path.join(filePath, "README.md").replace(basePath, "").replace(".md", "")
                     obj.text += "(README)"
+                } else if (obj.items.length == 0) {
+                    return
                 }
-                // 如果以-开头,则不折叠
-                if (file.indexOf("-") == 0) {
-                    obj.collapsed = true
-                    obj.text = obj.text.replace("-", "")
+                // 如果以\d+\.开头,则去掉\d+\.
+                if (/^\d+\./.test(file)) {
+                    obj.text = obj.text.replace(/^\d+\./, "")
                 }
                 // 递归读取文件夹
                 sidebarnode.push(obj)
@@ -74,6 +101,7 @@ function readfile(dir) {
         } else {
             // 判断是否为忽略的文件
             if (ban.indexOf(file) == -1) {
+
                 // 获取文件后缀
                 let extname = path.extname(filePath)
                 // 是否为hidden开头
@@ -87,6 +115,10 @@ function readfile(dir) {
                     // 忽略README.md
                     if (filename == "README") {
                         return
+                    }
+                    // 如果以\d+\.开头,则去掉\d+\.
+                    if (/^\d+\./.test(filename)) {
+                        filename = filename.replace(/^\d+\./, "")
                     }
                     // 将文件名和文件路径添加到sidebar中
                     sidebarnode.push({
