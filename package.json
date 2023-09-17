@@ -13,7 +13,7 @@
     "docs:preview": "vitepress preview"
   },
   "author": "",
-  "license": "ISC",
+  "license": "",
   "dependencies": {
     "tslib": "^2.6.1"
   },

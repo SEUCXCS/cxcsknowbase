@@ -4,18 +4,26 @@
 
 目前文档尚在完善中，内容不多，欢迎大家提出issues来帮助我们完善文档。
 
+<!-- TODO -->
 (待完善的文案)
 
-你可以在github提出[issues](https://github.com/SEUCXCS/cxcsknowbase/issues)来向知识库中添加内容
+你可以通过左边的导航栏来查看文档，也可以通过搜索来查找你想要的内容。
+
+> 导航栏带有(README)字样的栏目下面有子栏目，点击右边的箭头可以展开子栏目
+
+> 带有(README)字样的栏目本身也是一个页面哦
 
 ## 在github上查看
 
-[home](https://github.com/SEUCXCS/cxcsknowbase)
+本项目托管在github上，你可以通过以下链接来查看本项目的源码：
 
+[https://github.com/SEUCXCS/cxcsknowbase](https://github.com/SEUCXCS/cxcsknowbase)
+
+你可以在github提出[issues](https://github.com/SEUCXCS/cxcsknowbase/issues)来向知识库中添加内容
 
 ## 本地部署
 
-本项目采用[vitepress](https://vitepress.vuejs.org/)构建，你可以在本地部署一个vitepress然后在网页端来查看本项目，以获得更好的体验。
+本项目采用[vitepress](https://vitepress.vuejs.org/)构建，除了在网页端查看本知识库，你还可以在你的电脑上部署本项目（如果有需要的话）并在本地查看，方便编写文档。
 
 环境需求：
 - nodejs 18.0以上
@@ -42,7 +50,7 @@ Port 5173 is in use, trying another one...
   ➜  press h to show help
 ```
 
-点击`http://localhost:5174/`即可查看
+在本地浏览器访问`http://localhost:5174/`即可查看
 
 
 ## TODO
