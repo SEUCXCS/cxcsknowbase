@@ -163,5 +163,6 @@ export default defineConfig({
         socialLinks: [
             { icon: 'github', link: 'https://github.com/SEUCXCS/cxcsknowbase' }
         ]
-    }
+    },
+    ignoreDeadLinks: true
 })

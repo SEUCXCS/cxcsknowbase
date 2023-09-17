@@ -12,27 +12,21 @@ hero:
       link: /README
     - theme: alt
       text: 新生必读
-      link: /新生必读/README
+      link: /2.新生必读-/README
     - theme: alt
       text: 在github上查看
       link: https://github.com/SEUCXCS/cxcsknowbase
   image:
-    src: /img/计协logo1.png
+    src: ./assets/计协logo1.png
     alt: logo显示不出来了
 
-features:
-  - title: Feature A
-    icon: 🎈
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+# features:
+#   - title: Feature A
+#     icon: 🎈
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 #   - title: Feature B
 #     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 #   - title: Feature C
 #     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 ---
-
-<!-- <style>
-:root {
-  --vp-home-hero-name-color: #43019e;
-} 
-</style> -->
