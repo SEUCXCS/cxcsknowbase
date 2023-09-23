@@ -16,6 +16,7 @@ let ban = [
     ".git",
     "img",
     "public",
+    "components"
 ]
 
 const basePath = path.join(__dirname, "../")
