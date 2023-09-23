@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import mdTaskLists from 'markdown-it-task-lists'
 
 
 import fs from 'fs'
@@ -162,7 +163,14 @@ export default defineConfig({
         lastUpdated: true,
         socialLinks: [
             { icon: 'github', link: 'https://github.com/SEUCXCS/cxcsknowbase' }
-        ]
+        ],
+        
     },
-    ignoreDeadLinks: true
+    ignoreDeadLinks: true,
+    markdown: {
+        config: (md) => {
+            // md.use(mdFootnote)
+            md.use(mdTaskLists)
+        }
+    },
 })
