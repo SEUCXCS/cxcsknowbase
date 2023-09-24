@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in data.data" :key="item.id">
+            <tr v-for="item in data.data">
                 <td>{{ item.rank }}</td>
                 <!-- <td></td> -->
                 <td>
@@ -30,19 +30,22 @@
     </table>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue'
-import * as nowcoder from '../api/nowcoder.ts'
+import * as nowcoder from '../api/nowcoder'
 
-let data = ref({})
+let data = ref<nowcoder.nowcoderData>({
+    update: "",
+    data: []
+})
 nowcoder.getNowcoderDataGetInfoAll().then(res => {
     data.value = res
     data.value.data.sort((a, b) => {
         return b.pass - a.pass
     })
     data.value.data.forEach((element, index) => {
-        element.rank = index + 1
+        element["rank"] = index + 1
     })
 })
 </script>

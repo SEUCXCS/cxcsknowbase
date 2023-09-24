@@ -15,19 +15,20 @@ export interface resdata {
 
 export interface nowcoderData {
     data: {
-        id: number,
+        niukeID: string,
         name: string,
         user_id: string,
+        challenge: number,
         submit: number,
         pass: number,
-        rank: number
+        rank: number,
     }[],
     update: string
 }
 
 
-// const baseUrl = 'http://cxcs.truraly.fun/api/'
-const baseUrl = 'http://localhost:3002/api/'
+const baseUrl = 'http://api.truraly.fun/nowcoder/'
+// const baseUrl = 'http://localhost:3002/api/'
 
 /**
  * 获取所有用户的做题数据

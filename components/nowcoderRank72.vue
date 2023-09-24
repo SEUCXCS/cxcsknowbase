@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in data" :key="item.id">
+            <tr v-for="item in data.data">
                 <td>{{ item.rank }}</td>
                 <td>
                     <a :href="`https://ac.nowcoder.com/acm/contest/profile/${item.niukeID}/practice-coding`">{{ item.name
@@ -29,16 +29,17 @@
         </tbody>
     </table>
 </template>
-
-<script setup >
+<script setup lang="ts">
 import { ref } from 'vue'
-import * as nowcoder from '../api/nowcoder.ts'
+import * as nowcoder from '../api/nowcoder'
 // 月初获取数据的时间
 let update = ref("")
 // 当前获取数据的时间
 let update2 = ref("")
-let data = ref({})
-
+let data = ref<nowcoder.nowcoderData>({
+    update: "",
+    data: []
+})
 async function main() {
     let res = await nowcoder.getNowcoderDataGetInfo72()
     update.value = res.update
@@ -71,7 +72,7 @@ async function main() {
     res2.data.forEach((element, index) => {
         element.rank = index + 1
     });
-    data.value = res2.data
+    data.value = res2
     console.log(res2.data)
 }
 
