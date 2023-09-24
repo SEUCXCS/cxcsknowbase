@@ -29,11 +29,11 @@ function num2str(num) {
     return num < 10 ? '0' + num : num
 }
 
-// get outhers
-function getOuthers(outher) {
-    if (!outher) return '未知'
-    else if (typeof outher == 'string') return outher
-    else if (Array.isArray(outher)) return outher.join('、')
+// get authors
+function getauthors(author) {
+    if (!author) return '未知'
+    else if (typeof author == 'string') return author
+    else if (Array.isArray(author)) return author.join('、')
     else return '未知'
 }
 
@@ -56,7 +56,7 @@ function getOuthers(outher) {
         <!-- 在文章结尾添加第一次上传时间 -->
         <template #doc-footer-before>
             <p>贡献者：
-                {{ getOuthers($frontmatter.outhor) }}
+                {{ getauthors($frontmatter.author) }}
             </p>
             <p>
                 发布时间:

@@ -1,6 +1,6 @@
 ---
 outline: deep
-outhor: 
+author: 
 - 21软工郑钤元
 ---
 # C++入门

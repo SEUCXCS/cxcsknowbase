@@ -1,5 +1,5 @@
 ---
-outhor: 
+author: 
 - 21软工郑钤元
 ---
 # （案例）关于Visual Studio 中“scanf”输入报错的解决方法
