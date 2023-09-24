@@ -26,7 +26,7 @@ const sidebar = [
         text: "关于本知识库",
         link: "/README"
     },
-    ...readfile(path.join(__dirname, "../"))
+    ...readfile(path.join(__dirname, "../docs"))
 ]
 
 

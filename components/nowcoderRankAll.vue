@@ -6,7 +6,7 @@
             <tr>
                 <th>排名</th>
                 <th>用户</th>
-                <th>学号</th>
+                <!-- <th>学号</th> -->
                 <th>提交数</th>
                 <th>已通过</th>
                 <th>通过率</th>
@@ -20,7 +20,7 @@
                     <a :href="`https://ac.nowcoder.com/acm/contest/profile/${item.niukeID}/practice-coding`">{{ item.name
                     }}</a>
                 </td>
-                <td>{{ item.user_id }}</td>
+                <!-- <td>{{ item.user_id }}</td> -->
                 <td>{{ item.submit }}</td>
                 <td>{{ item.pass }}</td>
                 <td>{{ Math.round(item.pass / item.submit * 100)
@@ -36,7 +36,7 @@ import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue'
 
 let data = ref({})
 // let d = ref("")
-fetch('http://localhost:3001/getInfoAll')
+fetch('http://cxcs.truraly.fun/api/getInfoAll')
     .then(res => res.json())
     .then(json => {
         console.log("json", json.data)

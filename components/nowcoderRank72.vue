@@ -7,7 +7,7 @@
             <tr>
                 <th>排名</th>
                 <th>用户</th>
-                <th>学号</th>
+                <!-- <th>学号</th> -->
                 <th>提交数</th>
                 <th>已通过</th>
                 <th>通过率</th>
@@ -20,7 +20,7 @@
                     <a :href="`https://ac.nowcoder.com/acm/contest/profile/${item.niukeID}/practice-coding`">{{ item.name
                     }}</a>
                 </td>
-                <td>{{ item.user_id }}</td>
+                <!-- <td>{{ item.user_id }}</td> -->
                 <td>{{ item.submit }}</td>
                 <td>{{ item.pass }}</td>
                 <td>{{ Math.round((item.pass / item.submit || 0) * 100)
@@ -39,9 +39,9 @@ let update2 = ref("")
 let data = ref({})
 async function main() {
     // 获取月初的数据
-    let res = (await (await fetch('http://localhost:3001/getInfo72')).json()).data
+    let res = (await (await fetch('http://cxcs.truraly.fun/api/getInfo72')).json()).data
     // 获取当前的数据
-    let res2 = (await (await fetch('http://localhost:3001/getInfoAll')).json()).data
+    let res2 = (await (await fetch('http://cxcs.truraly.fun/api/getInfoAll')).json()).data
     console.log(res)
     // 获取差值
     res2.data.forEach(element => {
@@ -52,6 +52,10 @@ async function main() {
         if (index != -1) {
             element.pass -= res.data[index].pass
             element.submit -= res.data[index].submit
+        } else {
+            // 如果月初没有这个人，则pass和submit都为0
+            element.pass = 0
+            element.submit = 0
         }
 
     })
