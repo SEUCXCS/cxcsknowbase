@@ -33,26 +33,16 @@
 <script setup>
 
 import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue'
+import * as nowcoder from '../api/nowcoder.ts'
 
 let data = ref({})
-// let d = ref("")
-fetch('http://cxcs.truraly.fun/api/getInfoAll')
-    .then(res => res.json())
-    .then(json => {
-        console.log("json", json.data)
-        data.value = json.data
-
-        data.value.data.sort((a, b) => {
-            return b.pass - a.pass
-        })
-        data.value.data.forEach((element, index) => {
-            element.rank = index + 1
-        });
-        // console.log(data.value.update)
-        let d = new Date(data.value.update)
-        data.value.update = `${d.getFullYear()
-            }-${d.getMonth() + 1}-${d.getDate()}
-            ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+nowcoder.getNowcoderDataGetInfoAll().then(res => {
+    data.value = res
+    data.value.data.sort((a, b) => {
+        return b.pass - a.pass
     })
-
+    data.value.data.forEach((element, index) => {
+        element.rank = index + 1
+    })
+})
 </script>

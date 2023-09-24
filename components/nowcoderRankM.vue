@@ -32,17 +32,17 @@
 
 <script setup >
 import { ref } from 'vue'
+import * as nowcoder from '../api/nowcoder.ts'
 // 月初获取数据的时间
 let update = ref("")
 // 当前获取数据的时间
 let update2 = ref("")
 let data = ref({})
 async function main() {
-    // 获取月初的数据
-    let res = (await (await fetch('http://cxcs.truraly.fun/api/getInfoMonth')).json()).data
-    // 获取当前的数据
-    let res2 = (await (await fetch('http://cxcs.truraly.fun/api/getInfoAll')).json()).data
-    console.log(res)
+    let res = await nowcoder.getNowcoderDataGetInfoMonth()
+    update.value = res.update
+    let res2 = await nowcoder.getNowcoderDataGetInfoAll()
+    update2.value = res2.update
     // 获取差值
     res2.data.forEach(element => {
         // 如果月初有这个人，则减去月初的pass数据和submit数据
@@ -72,27 +72,7 @@ async function main() {
     });
     data.value = res2.data
     console.log(res2.data)
-    let d = new Date(res2.update)
-    update2.value = `${d.getFullYear()
-        }-${d.getMonth() + 1}-${d.getDate()}
-        ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
-    d = new Date(res.update)
-    update.value = `${d.getFullYear()
-        }-${d.getMonth() + 1}-${d.getDate()}
-        ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
 }
-
-
 main()
-// interface resdata {
-//     data: {
-//         id: number,
-//         name: string,
-//         user_id: string,
-//         submit: number,
-//         pass: number,
-//         rank: number
-//     }[],
-//     update: string
-// }
+
 </script>
