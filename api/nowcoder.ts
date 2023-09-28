@@ -27,7 +27,7 @@ export interface nowcoderData {
 }
 
 
-const baseUrl = 'http://api.truraly.fun/nowcoder/'
+const baseUrl = 'http://cxcs.truraly.fun/api/nowcoder'
 // const baseUrl = 'http://localhost:3002/api/'
 
 /**
