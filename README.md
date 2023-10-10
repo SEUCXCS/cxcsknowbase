@@ -42,7 +42,7 @@ author:
 - nodejs 18.0以上
 - git 2.0以上
 
-[nodejs&git环境部署](/docs/.nodejs环境搭建)
+[nodejs&git环境部署](/docs/nodejs环境搭建)
 
 ```shell
 # 本地部署
