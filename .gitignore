@@ -5,7 +5,7 @@
 
 /package-lock.json
 
-*.self.md
+*.self.*
 *.mp4
 /test
 /.VSCodeCounter

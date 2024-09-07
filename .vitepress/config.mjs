@@ -16,6 +16,7 @@ let ban = [
   "img",
   "public",
   "components",
+  "document",
 ];
 
 const basePath = path.join(__dirname, "../");
