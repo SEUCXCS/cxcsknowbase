@@ -9,3 +9,6 @@
 *.mp4
 /test
 /.VSCodeCounter
+
+
+*.self.*
