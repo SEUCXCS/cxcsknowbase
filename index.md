@@ -12,7 +12,7 @@ hero:
       link: /README
     - theme: alt
       text: 新生必读
-      link: /3.新生必读/README
+      link: /docs/3.新生必读/README
     - theme: alt
       text: 在github上查看
       link: https://github.com/SEUCXCS/cxcsknowbase
