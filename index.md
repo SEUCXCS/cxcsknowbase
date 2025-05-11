@@ -19,7 +19,6 @@ hero:
   image:
     src: ./assets/计协logo1.png
     alt: logo显示不出来了
-
 # features:
 #   - title: Feature A
 #     icon: 🎈
@@ -28,6 +27,4 @@ hero:
 #     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 #   - title: Feature C
 #     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-
 ---
-
