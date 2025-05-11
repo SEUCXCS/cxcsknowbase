@@ -1,0 +1,50 @@
+name: Deploy Blog
+run-name: ${{ github.actor }} updated the blog
+on:
+  push:
+    paths:
+      # 仅当docs中的文件更新时才会触发构建
+      - "docs/**"
+jobs:
+  update-blog:
+    # 使用基于Ubuntu的虚拟机
+    runs-on: ubuntu-latest
+    steps:
+      # 获取代码
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 设置SSH免密登陆
+      - name: Setup SSH
+        env:
+          CXCSADMIN_SSH: ${{ secrets.CXCSADMIN_SSH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$CXCSADMIN_SSH" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H 47.103.150.207 >> ~/.ssh/known_hosts
+          ssh cxcsadmin@47.103.150.207 "neofetch"
+
+      # 构建项目
+      - name: Build project
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+      - run: |
+          npm i pnpm -g
+          pnpm install
+          node ./js/tags.js        # 添加tag页
+          node ./js/addTimeLine.js # 添加时间线
+          node ./js/count.js       # 统计知识库情况
+          npm run build # 打包
+          # 将./assests目录下的文件复制到./.vitepress/dist/assests下
+          cp -r ./assets ./.vitepress/dist
+          cp -r ./docs/document ./.vitepress/dist/docs/document
+
+
+      # 上传到服务器
+      # 请确保/wwww/blogs/目录已经存在并且blogupdater用户有写权限
+      - name: Deploy with rsync
+        run: |
+          ssh cxcsadmin@47.103.150.207 "ls -dal /www/cxcs/cxcsknowbase"
+          rsync -avzh --delete  -partial  --bwlimit=1024 ./dist cxcsadmin@47.103.150.207:/www/cxcs/cxcsknowbase
