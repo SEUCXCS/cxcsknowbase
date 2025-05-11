@@ -33,9 +33,6 @@ jobs:
       - run: |
           npm i pnpm -g
           pnpm install
-          node ./js/tags.js        # 添加tag页
-          node ./js/addTimeLine.js # 添加时间线
-          node ./js/count.js       # 统计知识库情况
           pnpm run build # 打包
           # 将./assests目录下的文件复制到./.vitepress/dist/assests下
           cp -r ./assets ./.vitepress/dist
