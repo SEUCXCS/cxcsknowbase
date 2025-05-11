@@ -44,4 +44,4 @@ jobs:
       - name: Deploy with rsync
         run: |
           ssh cxcsadmin@47.103.150.207 "ls -dal /www/cxcs/cxcsknowbase"
-          rsync -avzh --delete  -partial  --bwlimit=1024 ./dist cxcsadmin@47.103.150.207:/www/cxcs/cxcsknowbase
+          rsync -avzh --delete  -partial  --bwlimit=1024 ./.vitepress/dist cxcsadmin@47.103.150.207:/www/cxcs/cxcsknowbase
