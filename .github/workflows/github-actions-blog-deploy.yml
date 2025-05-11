@@ -5,6 +5,8 @@ on:
     paths:
       # 仅当docs中的文件更新时才会触发构建
       - "docs/**"
+      - "./index.md"
+      - "./README.md"
 jobs:
   update-blog:
     # 使用基于Ubuntu的虚拟机
@@ -37,7 +39,6 @@ jobs:
           # 将./assests目录下的文件复制到./.vitepress/dist/assests下
           cp -r ./assets ./.vitepress/dist
           cp -r ./docs/document ./.vitepress/dist/docs/document
-
 
       # 上传到服务器
       # 请确保/wwww/blogs/目录已经存在并且blogupdater用户有写权限
