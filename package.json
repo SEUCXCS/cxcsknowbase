@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build && ./sh/build_movefile.sh",
-    "docs:preview": "vitepress preview"
+    "dev": "vitepress dev",
+    "build": "vitepress build && ./sh/build_movefile.sh",
+    "preview": "vitepress preview"
   },
   "author": "",
   "license": "",
