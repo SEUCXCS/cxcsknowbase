@@ -5,8 +5,7 @@ on:
     paths:
       # 仅当docs中的文件更新时才会触发构建
       - "docs/**"
-      - "./index.md"
-      - "./README.md"
+      - "**.md"
 jobs:
   update-blog:
     # 使用基于Ubuntu的虚拟机
